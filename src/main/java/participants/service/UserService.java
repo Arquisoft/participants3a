@@ -25,4 +25,6 @@ public interface UserService {
 	 * @param user usuario a registrar
 	 */
 	void saveUser(User user);
+	
+	User findByEmailAndPassword(String email, String password);
 }

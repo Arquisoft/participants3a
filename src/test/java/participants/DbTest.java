@@ -28,9 +28,16 @@ public class DbTest {
 	@Test
 	public void testSaveUser() throws Exception {
 		int previousSize = userService.findUsers().size();
-		userService.saveUser(new User("", "", "", new Date(), "", "", ""));
+		userService.saveUser(new User("", "", "", new Date(), "", "", "", ""));
 		assertEquals(previousSize + 1, userService.findUsers().size());
-		userService.saveUser(new User("", "", "", new Date(), "", "", ""));
+		userService.saveUser(new User("", "", "", new Date(), "", "", "", ""));
 		assertEquals(previousSize + 2, userService.findUsers().size());
+	}
+	
+	@Test
+	public void testFindByLoginPassword() throws Exception {
+		User user = new User("a@a.com", "A", "A", new Date(), "Casa", "ESP", "12345678A", "ab");
+		userService.saveUser(user);
+		assertEquals(user, userService.findByEmailAndPassword("a@a.com", "ab"));
 	}
 }
