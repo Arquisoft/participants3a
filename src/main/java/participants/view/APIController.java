@@ -1,8 +1,10 @@
-package hello;
+package participants.view;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import participants.UserInfo;
 
 @RestController
 public class APIController {
@@ -11,5 +13,4 @@ public class APIController {
     public UserInfo user() {
         return new UserInfo("pepe",0);
     }
-
 }

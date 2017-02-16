@@ -1,4 +1,4 @@
-package hello;
+package participants;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
@@ -8,6 +8,7 @@ import java.net.URL;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -16,6 +17,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
+
+import participants.Application;
+import participants.UserInfo;
+import participants.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -26,6 +31,9 @@ public class MainControllerTest {
     @Value("${local.server.port}")
     private int port;
 
+    @Autowired
+    private UserService userService;
+    
     private URL base;
 	private RestTemplate template;
 
@@ -48,5 +56,4 @@ public class MainControllerTest {
 		ResponseEntity<String> response = template.getForEntity(userURI, String.class);
 		UserInfo expected = new UserInfo("pepe",0);
 	}
-
 }
