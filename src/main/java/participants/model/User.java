@@ -40,10 +40,13 @@ public class User {
 	@NotNull
 	private String identDocument;
 	
+	@NotNull
+	private String password;
+	
 	User() {}
 	
 	public User(String email, String firstName, String lastName, Date birthday,
-			String address, String nationality, String identDocument) {
+			String address, String nationality, String identDocument, String password) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -51,6 +54,7 @@ public class User {
 		this.address = address;
 		this.nationality = nationality;
 		this.identDocument = identDocument;
+		this.password = password;
 	}
 	
 	public long getId() {
@@ -111,5 +115,38 @@ public class User {
 	
 	public void setIdentDocument(String identDocument) {
 		this.identDocument = identDocument;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		return true;
 	}
 }
