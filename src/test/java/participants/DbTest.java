@@ -1,6 +1,7 @@
 package participants;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 
@@ -12,9 +13,9 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import participants.Application;
-import participants.model.User;
-import participants.service.UserService;
+import participants.model.Ciudadano;
+import participants.model.Usuario;
+import participants.service.CitizenService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -23,14 +24,16 @@ import participants.service.UserService;
 public class DbTest {
 
     @Autowired
-    private UserService userService;
+    private CitizenService citizenService;
 
 	@Test
-	public void testSaveUser() throws Exception {
-		int previousSize = userService.findUsers().size();
-		userService.saveUser(new User("", "", "", new Date(), "", "", ""));
-		assertEquals(previousSize + 1, userService.findUsers().size());
-		userService.saveUser(new User("", "", "", new Date(), "", "", ""));
-		assertEquals(previousSize + 2, userService.findUsers().size());
+	public void testSaveCitizen() throws Exception {
+		int previousSize = citizenService.findCitizens().size();
+		citizenService.saveCitizen(new Ciudadano("", "", "", new Date(), "", "", "", new Usuario("", "")));
+		assertEquals(previousSize + 1, citizenService.findCitizens().size());
+		assertNotNull(citizenService.findCitizens().get(0).getUsuario());
+		citizenService.saveCitizen(new Ciudadano("", "", "", new Date(), "", "", "", new Usuario("", "")));
+		assertEquals(previousSize + 2, citizenService.findCitizens().size());
+		assertNotNull(citizenService.findCitizens().get(0).getUsuario());
 	}
 }
