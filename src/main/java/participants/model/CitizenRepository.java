@@ -10,14 +10,14 @@ import org.springframework.data.jpa.repository.Query;
  * @author UO246008
  *
  */
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface CitizenRepository extends JpaRepository<Ciudadano, Long> {
 	/**
 	 * Busca un usuario dados su login y contraseña
 	 * 
 	 * @param login login del usuario
 	 * @param password contraseña
 	 * @return usuario con ese login y contraseña
-	 */
-	@Query("select u from User u where u.email = ?1 and u.password = ?2")
-	User findByEmailAndPassword(String email, String password);
+	*/
+	 @Query("select c from Ciudadano c where c.email = ?1 and c.usuario.contraseña = ?2")
+	 Ciudadano findByEmailAndPassword(String email, String password);
 }

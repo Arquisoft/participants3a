@@ -10,19 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import participants.model.User;
-import participants.model.UserRepository;
+import participants.model.Ciudadano;
+import participants.model.CitizenRepository;
 import participants.web.ErrorResponse;
 
 @Controller
 public class MainController {
 
-	private UserRepository repository;
-
 	@Autowired
-	MainController(UserRepository repository) {
-		this.repository = repository;
-	}
+	private CitizenRepository repository;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getLoginHtml(Model model) {
@@ -42,13 +38,13 @@ public class MainController {
 		String email = parametro[0].split("=")[1].replace("%40", "@");
 		String contraseña = parametro[1].split("=")[1];
 
-		User user = null;// Obtener el user como sea;
+		Ciudadano user = null;// Obtener el user como sea;
 
 		model.addAttribute("email", user.getEmail());
-		model.addAttribute("name", user.getFirstName() + user.getLastName());
-		model.addAttribute("nif", user.getIdentDocument());
-		model.addAttribute("address", user.getAddress());
-		model.addAttribute("nationality", user.getNationality());
+		model.addAttribute("name", user.getNombre() + user.getApellidos());
+		model.addAttribute("nif", user.getDni());
+		model.addAttribute("address", user.getResidencia());
+		model.addAttribute("nationality", user.getNacionalidad());
 
 		return "datos";
 	}
