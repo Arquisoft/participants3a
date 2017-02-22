@@ -48,6 +48,7 @@ public class MainControllerTest {
 		String userURI = base.toString() + "/user";  
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
 		assertThat(response.getBody(), containsString("Login"));
+		assertThat(response.getBody(), containsString("Password"));
 	}
 	
 	@Test
@@ -56,4 +57,54 @@ public class MainControllerTest {
 		ResponseEntity<String> response = template.getForEntity(userURI, String.class);
 		UserInfo expected = new UserInfo("pepe",0);
 	}
+	
+	@Test
+	public void getDatosCitizen() {
+		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+		String userURI = base.toString() + "/validarse";
+		
+		
+		response = template.postForEntity(userURI, new PeticionServicioWeb("pperez@prueba.com", "1234"), String.class);
+		assertThat(response.getBody(), containsString("Email: pperez@prueba.com"));
+		assertThat(response.getBody(), containsString("Address: Uría, 3 Oviedo Asturias"));
+		assertThat(response.getBody(), containsString("Nationality: ESP"));
+	}
+	
+	
+	public class PeticionServicioWeb
+	{
+		private String email;
+		private String password;
+		
+		
+		public PeticionServicioWeb() {}
+		
+		public PeticionServicioWeb(String email, String password)
+		{
+			this.email = email;
+			this.password = password;
+		}
+		
+		
+		public String getEmail()
+		{
+			return email;
+		}
+		
+		public void setEmail(String email)
+		{
+			this.email = email;
+		}
+		
+		public String getPassword()
+		{
+			return password;
+		}
+		
+		public void setPassword(String password)
+		{
+			this.password = password;
+		}
+	}
 }
+
