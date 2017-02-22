@@ -1,7 +1,6 @@
 package participants.service;
 
 import java.util.List;
-
 import participants.model.Ciudadano;
 
 /**
@@ -24,5 +23,8 @@ public interface CitizenService {
 	 * 
 	 * @param user usuario a registrar
 	 */
+
 	void saveCitizen(Ciudadano ciudadano);
+
+	Ciudadano findByEmailAndPassword(String email, String password);
 }

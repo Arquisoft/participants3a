@@ -30,4 +30,9 @@ public class CitizenServiceImpl implements CitizenService {
 	public void saveCitizen(Ciudadano ciudadano) {
 		citizenRepository.save(ciudadano);
 	}
+
+	@Override
+	public Ciudadano findByEmailAndPassword(String email, String password) {
+		return citizenRepository.findByEmailAndPassword(email, password);
+	}
 }

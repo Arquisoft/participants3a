@@ -36,4 +36,11 @@ public class DbTest {
 		assertEquals(previousSize + 2, citizenService.findCitizens().size());
 		assertNotNull(citizenService.findCitizens().get(0).getUsuario());
 	}
+	
+	@Test
+	public void testFindByLoginPassword() throws Exception {
+		Ciudadano citizen = new Ciudadano("A", "A", "a@a.com", new Date(), "Casa", "ESP", "12345678A", new Usuario("", "ab"));
+		citizenService.saveCitizen(citizen);
+		assertEquals(citizen, citizenService.findByEmailAndPassword("a@a.com", "ab"));
+	}
 }
