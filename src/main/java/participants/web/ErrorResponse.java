@@ -1,4 +1,4 @@
-package participants.view;
+package participants.web;
 
 /**
  * Sólo sirve para poder recoger las excpeciones que se puedan

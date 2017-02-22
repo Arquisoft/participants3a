@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import participants.model.User;
 import participants.model.UserRepository;
+import participants.web.ErrorResponse;
 
 @Controller
 public class MainController {
