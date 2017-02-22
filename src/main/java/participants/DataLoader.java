@@ -17,7 +17,7 @@ import participants.model.Usuario;
 @Component
 public class DataLoader implements ApplicationRunner {
 
-	private static final String DEFAULT_USERS_FILE_PATH = "defaultUsers.txt";
+	private static final String DEFAULT_USERS_FILE_PATH = "/defaultUsers.txt";
 	private CitizenRepository citizenRepository;
 	
 	@Autowired
