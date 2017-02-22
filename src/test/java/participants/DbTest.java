@@ -2,6 +2,7 @@ package participants;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.Date;
 
@@ -42,5 +43,13 @@ public class DbTest {
 		Ciudadano citizen = new Ciudadano("A", "A", "a@a.com", new Date(), "Casa", "ESP", "12345678A", new Usuario("", "ab"));
 		citizenService.saveCitizen(citizen);
 		assertEquals(citizen, citizenService.findByEmailAndPassword("a@a.com", "ab"));
+		
+		//Buscamos uno de los usuarios registrados por defecto
+		assertNotNull(citizenService.findByEmailAndPassword("pperez@prueba.com", "1234"));
+		
+		//Si el nombre de usuario o la contraseña son incorrectos devuelve null
+		assertNull(citizenService.findByEmailAndPassword("pparez@prueba.com", "1234"));
+		assertNull(citizenService.findByEmailAndPassword("pperez@prueba.com", "1235"));
+		assertNull(citizenService.findByEmailAndPassword("pparez@prueba.com", "1235"));
 	}
 }
