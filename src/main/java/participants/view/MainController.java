@@ -25,23 +25,17 @@ public class MainController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/validacion", method = RequestMethod.POST)
+	@RequestMapping(value = "/validarse", method = RequestMethod.POST)
 	public String postUserHtml(@RequestBody String parametros, Model model) {
 		String[] parametro = parametros.split("&");
-
-		// if(parametro[0].split("=").length<=1)
-		// Deberia lanzar un error de se requiere EMAIL
-
-		// if(parametro[1].split("=").length<=1)
-		// Deberia lanzar un error de se requiere EMAIL
 
 		String email = parametro[0].split("=")[1].replace("%40", "@");
 		String contraseña = parametro[1].split("=")[1];
 
-		Ciudadano user = null;// Obtener el user como sea;
+		Ciudadano user = repository.findByEmailAndPassword(email, contraseña);
 
 		model.addAttribute("email", user.getEmail());
-		model.addAttribute("name", user.getNombre() + user.getApellidos());
+		model.addAttribute("name", user.getNombre() + " " + user.getApellidos());
 		model.addAttribute("nif", user.getDni());
 		model.addAttribute("address", user.getResidencia());
 		model.addAttribute("nationality", user.getNacionalidad());
