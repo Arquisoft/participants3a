@@ -1,0 +1,10 @@
+Pedro;Pérez González;pperez@prueba.com;20/12/1967;Uría, 3 Oviedo Asturias;ESP;35237165C;pperez;1234
+Juan;Álvarez Rodríguez;jalvrod@a.com;12/06/1979;Olavarrieta, 2 Luarca Asturias;ESP;40123412G;jalvrod;1234
+Paula;García Arisqueta;pgarisq@b.com;06/05/1956;Uría, 2 Luarca Asturias;ESP;43147161C;pgarisq;1234
+Jose;González Hernández;jghernandez@micorreo.es;10/07/1954;Corrida, 2 Gijón Asturias;ESP;45671471D;jghernandez;1234
+Miguel;García Vázquez;mgarv@hmail.com;07/02/1972;Avenida del Mar, 10 Oviedo Asturias;ESP;34543421H;mgarv;1234
+Aniceto;Gol Mayordomo;agolmay@goomail.com;12/04/1987;Santa Susana, 5 Oviedo Asturias;ESP;43424140Z;agolmay;1234
+Laura;Menéndez Fernández;lmenfer@ecorreo.com;12/12/1982;Gran Vía, 80 Madrid;ESP;50521412Y;lmenfer;1234
+Polonia;Cueto Sánchez;polcueto@mimail.es;12/09/2000;González Besada, 2;ESP;53546765H;polcueto;1234
+Marta;González García;martagonga@fastmail.com;10/08/1999;Calvo Sotelo, 2 Oviedo Asturias;ESP;56765432A;martagonga;1234
+Isabel;López Pérez;isalopez@yourmail.com;20/12/1958;Melquiades Álvarez, 2 Oviedo Asturias;ESP;21452178B;isalopez;1234

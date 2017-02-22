@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 import participants.Application;
 import participants.UserInfo;
-import participants.service.UserService;
+import participants.service.CitizenService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -32,7 +32,7 @@ public class MainControllerTest {
     private int port;
 
     @Autowired
-    private UserService userService;
+    private CitizenService userService;
     
     private URL base;
 	private RestTemplate template;

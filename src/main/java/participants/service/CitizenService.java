@@ -1,8 +1,7 @@
 package participants.service;
 
 import java.util.List;
-
-import participants.model.User;
+import participants.model.Ciudadano;
 
 /**
  * Punto de entrada a los servicios de 
@@ -11,20 +10,21 @@ import participants.model.User;
  * @author UO246008
  *
  */
-public interface UserService {
+public interface CitizenService {
 	/**
 	 * Consulta todos los usuarios registrados
 	 * en el sistema
 	 * 
 	 * @return usuarios del sistema
 	 */
-	List<User> findUsers();
+	List<Ciudadano> findCitizens();
 	/**
 	 * Registra un usuario en el sistema
 	 * 
 	 * @param user usuario a registrar
 	 */
-	void saveUser(User user);
-	
-	User findByEmailAndPassword(String email, String password);
+
+	void saveCitizen(Ciudadano ciudadano);
+
+	Ciudadano findByEmailAndPassword(String email, String password);
 }
