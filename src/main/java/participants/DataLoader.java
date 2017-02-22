@@ -17,7 +17,7 @@ import participants.model.Usuario;
 @Component
 public class DataLoader implements ApplicationRunner {
 
-	private static final String DEFAULT_USERS_FILE_PATH = "defaultUsers.txt";
+	private static final String DEFAULT_USERS_FILE_PATH = "/defaultUsers.txt";
 	private CitizenRepository citizenRepository;
 	
 	@Autowired
@@ -28,7 +28,7 @@ public class DataLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments arg0) throws Exception {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		BufferedReader bfReader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(DEFAULT_USERS_FILE_PATH)));
+		BufferedReader bfReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(DEFAULT_USERS_FILE_PATH)));
 		
 		while (bfReader.ready()) {
 			String line = bfReader.readLine();
