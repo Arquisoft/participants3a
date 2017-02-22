@@ -61,7 +61,7 @@ public class MainControllerTest {
 	@Test
 	public void getDatosCitizen() {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-		String userURI = base.toString() + "/user";
+		String userURI = base.toString() + "/validarse";
 		
 		
 		response = template.postForEntity(userURI, new PeticionServicioWeb("pperez@prueba.com", "1234"), String.class);
