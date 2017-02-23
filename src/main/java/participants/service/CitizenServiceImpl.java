@@ -35,4 +35,9 @@ public class CitizenServiceImpl implements CitizenService {
 	public Ciudadano findByEmailAndPassword(String email, String password) {
 		return citizenRepository.findByEmailAndPassword(email, password);
 	}
+	
+	@Override
+	public void removeCitizen(Ciudadano ciudadano) {
+		citizenRepository.delete(ciudadano);
+	}
 }

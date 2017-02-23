@@ -61,8 +61,8 @@ public class HTMLController {
 	@ExceptionHandler(ErrorInterface.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public String handleErrorResponseNotFound(ErrorInterface excep, Model model) {
-		model.addAttribute("failure", excep.getStringError());
+		model.addAttribute("error", excep.getStringError());
 
-		return "failure";
+		return "error";
 	}
 }

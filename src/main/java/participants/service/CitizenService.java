@@ -26,5 +26,19 @@ public interface CitizenService {
 
 	void saveCitizen(Ciudadano ciudadano);
 
+	/**
+	 * Busca un usuario dado su email y contraseña
+	 * 
+	 * @param email email del usuario
+	 * @param password contraseña del usuario (cifrada)
+	 * @return usuario con esos datos
+	 */
 	Ciudadano findByEmailAndPassword(String email, String password);
+	
+	/**
+	 * Elimina un ciudadano de la base de datos
+	 * 
+	 * @param ciudadano ciudadano a eliminar
+	 */
+	void removeCitizen(Ciudadano ciudadano);
 }
