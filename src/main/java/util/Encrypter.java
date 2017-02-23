@@ -9,9 +9,9 @@ public class Encrypter {
 
 	public static Encrypter getInstance() {
 		if (instance == null)
-			return new Encrypter();
+			instance = new Encrypter();
 
-		else return instance;
+		return instance;
 	}
 
 	public String makeSHA1Hash(String input) {

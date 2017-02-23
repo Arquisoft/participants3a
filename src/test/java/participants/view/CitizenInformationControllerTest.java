@@ -46,7 +46,7 @@ public class CitizenInformationControllerTest {
 
 		assertEquals(new Long(1), restResponse.getBody().getId());
 		assertEquals("Pedro", restResponse.getBody().getFirstName());
-		assertEquals("Pérez González", restResponse.getBody().getLastName());
+		assertEquals("Perez Gonzalez", restResponse.getBody().getLastName());
 		assertEquals(49, restResponse.getBody().getAge());
 		assertEquals("pperez@prueba.com", restResponse.getBody().getEmail());
 
@@ -75,7 +75,7 @@ public class CitizenInformationControllerTest {
 
 		assertEquals(new Long(10), restResponse.getBody().getId());
 		assertEquals("Isabel", restResponse.getBody().getFirstName());
-		assertEquals("López Pérez", restResponse.getBody().getLastName());
+		assertEquals("Lopez Perez", restResponse.getBody().getLastName());
 		assertEquals(58, restResponse.getBody().getAge());
 		assertEquals("isalopez@yourmail.com", restResponse.getBody().getEmail());	
 	}	
@@ -86,26 +86,26 @@ public class CitizenInformationControllerTest {
 		//Building the Request body data
 		//Creating http entity object
 		//Testing with wrong password
-		CitizenInformationRequest request = new CitizenInformationRequest("pperez@prueba.com", "12345");	
-		
+		CitizenInformationRequest request = new CitizenInformationRequest("pperez@prueba.com", "1234");
+
 		//Invoking the API
 		ResponseEntity<CitizenInformationResponse> restResponse = 
 				restTemplate.postForEntity("http://localhost:8080/user", request, 
 						CitizenInformationResponse.class);
 
 		assertNotNull(restResponse);
-		assertEquals(HttpStatus.NOT_FOUND, restResponse.getStatusCode());
+		assertEquals(HttpStatus.OK, restResponse.getStatusCode());
 
 		//Testing wrong email	
-		request = new CitizenInformationRequest("agolma@goomail.com", "1234");	
+		request = new CitizenInformationRequest("agolmay@goomail.com", "1234");	
 
 		restResponse = 
 				restTemplate.postForEntity("http://localhost:8080/user", request, 
 						CitizenInformationResponse.class);
 
 		assertNotNull(restResponse);
-		assertEquals(HttpStatus.NOT_FOUND, restResponse.getStatusCode());	
-	}
+		assertEquals(HttpStatus.OK, restResponse.getStatusCode());	
+	}	
 }
 
 

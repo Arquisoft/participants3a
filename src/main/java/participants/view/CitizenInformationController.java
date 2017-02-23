@@ -40,7 +40,7 @@ public class CitizenInformationController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/user", 
 			produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},	
-			consumes = { MediaType.APPLICATION_JSON_VALUE})	
+			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})	
 	public ResponseEntity<CitizenInformationResponse> retrieveCitizenInformation(@RequestBody CitizenInformationRequest form) {	
 		String email = form.getLogin();
 		String password = form.getPassword();		
