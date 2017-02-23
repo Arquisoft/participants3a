@@ -84,15 +84,15 @@ public class DbTest {
 	
 	@Test
 	public void testUpdateCitizen() throws Exception {
-		Ciudadano citizen = new Ciudadano("B", "B", "j@j.com", new Date(), "Casa", "ESP", "22345678A", new Usuario("az", "ae"));
+		Ciudadano citizen = new Ciudadano("Fernando", "Garcia Alvarez", "fergaral@am.com", new Date(), "Casa", "ESP", "22341218A", new Usuario("fergaral", "ae"));
 		citizenService.saveCitizen(citizen);
-		citizen = citizenService.findByEmailAndPassword("j@j.com", "ae");
+		citizen = citizenService.findByEmailAndPassword("fergaral@am.com", "ae");
 		assertNotNull(citizen);
-		assertEquals("B", citizen.getNombre());
-		citizen.setNombre("C");
+		assertEquals("Fernando", citizen.getNombre());
+		citizen.setNombre("Otronombre");
 		citizenService.saveCitizen(citizen);
-		citizen = citizenService.findByEmailAndPassword("j@j.com", "ae");
+		citizen = citizenService.findByEmailAndPassword("fergaral@am.com", "ae");
 		assertNotNull(citizen);
-		assertEquals("C", citizen.getNombre());
+		assertEquals("Otronombre", citizen.getNombre());
 	}
 }
