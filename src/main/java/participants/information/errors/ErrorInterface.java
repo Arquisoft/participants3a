@@ -1,16 +1,14 @@
-package participants.web;
+package participants.information.errors;
 
 /**
- * Sólo sirve para poder recoger las excpeciones que se puedan
+ * Sólo sirve para poder recoger las excepciones que se puedan
  * recoger las excepciones que se producen en la respuesta
  * 
  */
-public abstract class ErrorResponse extends RuntimeException
+public abstract class ErrorInterface extends RuntimeException
 {
-	protected static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;	
 	
-	
-	public abstract String getMessageJSONFormat();
-	
-	public abstract String getMessageStringFormat();
+	public abstract String getJSONError();	
+	public abstract String getStringError();
 }
