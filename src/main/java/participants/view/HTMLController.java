@@ -63,6 +63,6 @@ public class HTMLController {
 	public String handleErrorResponseNotFound(ErrorInterface excep, Model model) {
 		model.addAttribute("failure", excep.getStringError());
 
-		return "failure";
+		return "error";
 	}
 }
