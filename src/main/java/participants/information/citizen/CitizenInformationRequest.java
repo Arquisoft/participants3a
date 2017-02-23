@@ -1,11 +1,11 @@
-package participants.web.json;
+package participants.information.citizen;
 
 /**
  * Representa la información que irá en el JSON cuando se 
  * piden los datos del usuario
  * 
  * @author UO247242
- * 
+ *  
  */
 public class CitizenInformationRequest {
 	
@@ -17,6 +17,8 @@ public class CitizenInformationRequest {
 		this.login = login;
 		this.password = password;
 	}
+	
+	public CitizenInformationRequest() {}
 
 	public String getLogin() {
 		return login;
@@ -55,5 +57,5 @@ public class CitizenInformationRequest {
 		} else if (!password.equals(other.password))
 			return false;
 		return true;
-	}		
+	}	
 }

@@ -11,11 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import participants.model.Ciudadano;
+import participants.information.errors.CitizenNotFoundError;
+import participants.information.errors.ErrorInterface;
 import participants.model.CitizenRepository;
-import participants.web.ErrorResponse;
 
+/**
+ * Representa la información que irá en el JSON cuando se 
+ * envíen sus datos al usuario
+ * 
+ * @author UO237394 (base principal), UO247242 (gestión de cuando la información no se encuentra=
+ * 
+ */
 @Controller
-public class MainController {
+public class HTMLController {
 
 	@Autowired
 	private CitizenRepository repository;
@@ -27,6 +35,7 @@ public class MainController {
 
 	@RequestMapping(value = "/validarse", method = RequestMethod.POST)
 	public String postUserHtml(@RequestBody String parametros, Model model) {
+
 		String[] parametro = parametros.split("&");
 
 		String email = parametro[0].split("=")[1].replace("%40", "@");
@@ -34,20 +43,26 @@ public class MainController {
 
 		Ciudadano user = repository.findByEmailAndPassword(email, contraseña);
 
-		model.addAttribute("email", user.getEmail());
-		model.addAttribute("name", user.getNombre() + " " + user.getApellidos());
-		model.addAttribute("nif", user.getDni());
-		model.addAttribute("address", user.getResidencia());
-		model.addAttribute("nationality", user.getNacionalidad());
+		if (user != null) {
 
-		return "datos";
+			model.addAttribute("email", user.getEmail());
+			model.addAttribute("firstName", user.getNombre());
+			model.addAttribute("lastName", user.getApellidos());
+			model.addAttribute("nif", user.getDni());
+			model.addAttribute("address", user.getResidencia());
+			model.addAttribute("nationality", user.getNacionalidad());
+
+			return "datos";
+		}
+		else 
+			throw new CitizenNotFoundError();
 	}
 
-	@ExceptionHandler(ErrorResponse.class)
+	@ExceptionHandler(ErrorInterface.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
-	public String handleErrorResponseNotFound(ErrorResponse excep, Model model) {
-		model.addAttribute("error", excep.getMessageStringFormat());
+	public String handleErrorResponseNotFound(ErrorInterface excep, Model model) {
+		model.addAttribute("failure", excep.getStringError());
 
-		return "error";
+		return "failure";
 	}
 }

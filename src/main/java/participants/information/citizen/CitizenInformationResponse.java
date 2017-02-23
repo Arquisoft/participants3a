@@ -1,4 +1,4 @@
-package participants.web.json;
+package participants.information.citizen;
 
 import java.sql.Date;
 import java.time.LocalDate;
