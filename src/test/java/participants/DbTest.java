@@ -18,6 +18,7 @@ import participants.model.Ciudadano;
 import participants.model.Usuario;
 import participants.service.CitizenService;
 
+@SuppressWarnings("deprecation")
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration

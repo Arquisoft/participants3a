@@ -15,6 +15,7 @@ import participants.information.citizen.CitizenInformationRequest;
 import participants.information.citizen.CitizenInformationResponse;
 import participants.model.Ciudadano;
 import participants.service.CitizenService;
+import util.Encrypter;
 import participants.information.errors.*;
 
 /**
@@ -32,7 +33,7 @@ public class CitizenInformationController {
 
 	/**
 	 * Respuesta HTTP. Incluye información sobre el ciudadano
-	 * si existe, sino devuelve error 404
+	 * si existe, sino devuelve error 404 
 	 * 
 	 * @author UO247242
 	 * 
@@ -46,11 +47,13 @@ public class CitizenInformationController {
 			CitizenInformationRequest form) {
 		
 		String email = form.getLogin();
-		String password = form.getPassword();
+		String password = form.getPassword();		
+		String encryptedPassword = Encrypter.getInstance().makeSHA1Hash(password);
 
-		Ciudadano ciudadano = citizenService.findByEmailAndPassword(email, password);		
+		Ciudadano ciudadano = citizenService.findByEmailAndPassword(email, encryptedPassword);		
 		
 		if (ciudadano != null) {
+			
 			CitizenInformationResponse citizen = new CitizenInformationResponse(ciudadano);
 
 		return ResponseEntity.ok(citizen);

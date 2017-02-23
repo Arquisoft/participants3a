@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Encrypter {
-
+ 
 	private static Encrypter instance;
 
 	public static Encrypter getInstance() {
