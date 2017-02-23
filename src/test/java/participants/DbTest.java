@@ -75,23 +75,23 @@ public class DbTest {
 	
 	@Test
 	public void testRemoveCitizen() throws Exception {
-		Ciudadano citizen = new Ciudadano("B", "B", "b@b.com", new Date(), "Casa", "ESP", "22345678A", new Usuario("az", "ae"));
+		Ciudadano citizen = new Ciudadano("B", "B", "y@y.com", new Date(), "Casa", "ESP", "22345678A", new Usuario("az", "ae"));
 		citizenService.saveCitizen(citizen);
-		assertNotNull(citizenService.findByEmailAndPassword("b@b.com", "ae"));
+		assertNotNull(citizenService.findByEmailAndPassword("y@y.com", "ae"));
 		citizenService.removeCitizen(citizen);
-		assertNull(citizenService.findByEmailAndPassword("b@b.com", "ae"));
+		assertNull(citizenService.findByEmailAndPassword("y@y.com", "ae"));
 	}
 	
 	@Test
 	public void testUpdateCitizen() throws Exception {
-		Ciudadano citizen = new Ciudadano("B", "B", "b@b.com", new Date(), "Casa", "ESP", "22345678A", new Usuario("az", "ae"));
+		Ciudadano citizen = new Ciudadano("B", "B", "j@j.com", new Date(), "Casa", "ESP", "22345678A", new Usuario("az", "ae"));
 		citizenService.saveCitizen(citizen);
-		citizen = citizenService.findByEmailAndPassword("b@b.com", "ae");
+		citizen = citizenService.findByEmailAndPassword("j@j.com", "ae");
 		assertNotNull(citizen);
 		assertEquals("B", citizen.getNombre());
 		citizen.setNombre("C");
 		citizenService.saveCitizen(citizen);
-		citizen = citizenService.findByEmailAndPassword("b@b.com", "ae");
+		citizen = citizenService.findByEmailAndPassword("j@j.com", "ae");
 		assertNotNull(citizen);
 		assertEquals("C", citizen.getNombre());
 	}

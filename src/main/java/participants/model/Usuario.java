@@ -62,6 +62,10 @@ public class Usuario {
 	public void setCiudadano(Ciudadano ciudadano) {
 		this.ciudadano = ciudadano;
 	}
+	
+	public Ciudadano getCiudadano() {
+		return ciudadano;
+	}
 
 	@Override
 	public int hashCode() {

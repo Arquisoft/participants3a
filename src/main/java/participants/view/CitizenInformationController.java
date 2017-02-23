@@ -29,7 +29,7 @@ import participants.information.errors.*;
 public class CitizenInformationController {
 	
 	@Autowired 
-	CitizenService citizenService;
+	private CitizenService citizenService;
 
 	/**
 	 * Respuesta HTTP. Incluye información sobre el ciudadano
