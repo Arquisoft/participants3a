@@ -33,7 +33,7 @@ public class HTMLControllerTest {
 
 		//Building the Request body data
 		//Creating http entity object
-		CitizenInformationRequest request = new CitizenInformationRequest("pperez@prueba.com", "1234");		
+		CitizenInformationRequest request = new CitizenInformationRequest("pperez@prueba.com", "7110eda4d09e062aa5e4a390b0a572ac0d2c0220");		
 
 
 		//Invoking the API
@@ -50,7 +50,7 @@ public class HTMLControllerTest {
 		assertEquals("pperez@prueba.com", restResponse.getBody().getEmail());
 
 		//Testing another Citizen		
-		request = new CitizenInformationRequest("agolmay@goomail.com", "1234");	
+		request = new CitizenInformationRequest("agolmay@goomail.com", "7110eda4d09e062aa5e4a390b0a572ac0d2c0220");	
 
 		restResponse = 
 				restTemplate.postForEntity("http://localhost:8080/user", request, 
@@ -65,7 +65,7 @@ public class HTMLControllerTest {
 		assertEquals("agolmay@goomail.com", restResponse.getBody().getEmail());
 
 		//Testing another Citizen
-		request = new CitizenInformationRequest("isalopez@yourmail.com", "1234");		
+		request = new CitizenInformationRequest("isalopez@yourmail.com", "7110eda4d09e062aa5e4a390b0a572ac0d2c0220");		
 		restResponse = 
 				restTemplate.postForEntity("http://localhost:8080/user", request, 
 						CitizenInformationResponse.class);
@@ -96,7 +96,7 @@ public class HTMLControllerTest {
 		assertEquals(HttpStatus.NOT_FOUND, restResponse.getStatusCode());
 
 		//Testing wrong email	
-		request = new CitizenInformationRequest("agolma@goomail.com", "1234");	
+		request = new CitizenInformationRequest("agolma@goomail.com", "7110eda4d09e062aa5e4a390b0a572ac0d2c0220");	
 
 		restResponse = 
 				restTemplate.postForEntity("http://localhost:8080/user", request, 
