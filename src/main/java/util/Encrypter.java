@@ -8,7 +8,7 @@ public class Encrypter {
 	private static Encrypter instance;
 
 	public static Encrypter getInstance() {
-		if (instance != null)
+		if (instance == null)
 			return new Encrypter();
 
 		else return instance;
