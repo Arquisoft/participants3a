@@ -32,6 +32,8 @@ public class CitizenInformationResponse {
 		this.age = getAge((Date) ciudadano.getFechaNacimiento());
 		this.email = ciudadano.getEmail();
 	}
+	
+	public CitizenInformationResponse() { }
 
 	public Long getId() {
 		return id;

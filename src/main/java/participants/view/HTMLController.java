@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import participants.model.Ciudadano;
+import util.Encrypter;
 import participants.information.errors.CitizenNotFoundError;
 import participants.information.errors.ErrorInterface;
 import participants.model.CitizenRepository;
@@ -19,7 +20,8 @@ import participants.model.CitizenRepository;
  * Representa la información que irá en el JSON cuando se 
  * envíen sus datos al usuario
  * 
- * @author UO237394 (base principal), UO247242 (gestión de cuando la información no se encuentra=
+ * @author UO237394 (base principal), UO247242 (gestión de cuando la información no se encuentra
+ *  y de la encrioptacion de contraseña)
  * 
  */
 @Controller
@@ -40,8 +42,9 @@ public class HTMLController {
 
 		String email = parametro[0].split("=")[1].replace("%40", "@");
 		String contraseña = parametro[1].split("=")[1];
-
-		Ciudadano user = repository.findByEmailAndPassword(email, contraseña);
+		
+		String contraseñaEncriptada = Encrypter.getInstance().makeSHA1Hash(contraseña);
+		Ciudadano user = repository.findByEmailAndPassword(email, contraseñaEncriptada);
 
 		if (user != null) {
 
