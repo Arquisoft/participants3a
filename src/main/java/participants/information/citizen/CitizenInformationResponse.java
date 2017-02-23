@@ -21,9 +21,7 @@ public class CitizenInformationResponse {
 	private String lastName;
 	private int  age;
 	private String email;
-	
-	public CitizenInformationResponse() {}
-	
+
 	public CitizenInformationResponse(Ciudadano ciudadano) {
 		
 		this.id = ciudadano.getId();
